@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "model_head.html" %}
+</head>
+<body>
+    <form action="submit/" method="POST">{% csrf_token %}
+        <div align="center">
+            <h1>Login</h1>
+            <label>Usuário:</label>
+            <input type="text" name="nome_de_usuario">
+            <label>Senha:</label>
+            <input type="password" name="senha_do_usuario">
+            <button type="submit" name="botao_que_envia_dados_do_formulario">
+                Entrar
+            </button>
+        </div>
+    </form>
+    {% for message in messages %}
+        <div align="center">
+            <br>
+            <strong>Erro: </strong>{{ message }}
+        </div>
+    {% endfor %}
+</body>
+</html>

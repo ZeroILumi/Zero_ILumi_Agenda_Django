@@ -1,0 +1,29 @@
+{% extends "model_page.html" %}
+{% block content %}
+    <div align="center" style="list-style-position: inside">
+        <a href="evento/">
+            <button type="button">Agendar Novo Evento</button>
+        </a>
+        <h2>Agendamentos</h2>
+        <ul style="font-size: 18px;
+                   list-style-type: none">
+            {% for evento in eventos %}
+                <li>
+                    <div style= {% if evento.get_evento_atrasado %}
+                                "color:red"
+                                {%  endif %}>
+                        Titulo do evento - {{ evento.titulo_do_evento_agendado}}
+                        <br>
+                        Data do evento - {{ evento.get_data_do_evento_agendado}}
+                        <br>
+                        (<a href="evento/?id={{ evento.id}}">Editar</a> /
+                         <a href="evento/delete/{{ evento.id }}/">Excluir</a>)
+                        <br>
+                        <br>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

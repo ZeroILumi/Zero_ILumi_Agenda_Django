@@ -1,0 +1,35 @@
+{% extends "model_page.html" %}
+    {% block content %}
+    <div align="center" style="list-style-position: inside">
+        <h2>Agendar Evento</h2>
+        <form action="submit/" method="POST"> {% csrf_token %}
+            <label>Título do evento:</label>
+            <input type="number" name="id_evento" value="{{ evento.id }}" hidden>
+            <br>
+            <input type="text" name="titulo_agendamento_novo" size="23" value="{{ evento.titulo_do_evento_agendado }}">
+            <br>
+            <label>Data do evento:</label>
+            <br>
+            <input type="datetime-local" name="data_do_evento_agendamento_novo" value="{{ evento.get_data_do_evento_agendado_input }}">
+            <br>
+            <label>Descrição do evento</label>
+            <br>
+            <textarea name="input_descricao_agendamento_novo"
+                      rows="5"
+                      cols="23"
+                      style="resize:none">
+                {{ evento.decricao_do_evento_agendado }}
+            </textarea>
+            <br>
+            <label>Local do Evento</label>
+            <br>
+            <input type="text" name="local_do_evento_agendamento_novo">
+            <br>
+            <br>
+            <button type="submit" name="criar_novo_agendamento">Salvar</button>
+            <a href="/">
+                <button type="button" name="cancelar_criacao_de_novo_agendamento">Voltar</button>
+            </a>
+        </form>
+    </div>
+    {% endblock %}
